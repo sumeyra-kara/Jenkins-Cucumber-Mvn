@@ -45,7 +45,7 @@ pipeline {
             }
             post {
                 always {
-                    cucumber 'cucumber-html-reports\.cache\target\cucumber-reports\cucumber.json'
+                    cucumber 'target\cucumber-reports\cucumber.json'
                 }
             }
 
