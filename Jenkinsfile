@@ -43,20 +43,20 @@ pipeline {
                 bat "mvn -f pom.xml test"
                 bat "mvn clean verify -Dcucumber.filter.tags='$params.TagName' -DfailIfNoTests=false"
             }
-            post {
-                always {
-                    cucumber 'target/cucumber-reports/cucumber.json'
-                }
-            }
+//             post {
+//                 always {
+//                     cucumber 'target/cucumber-reports/cucumber.json'
+//                 }
+//             }
 
         }
-//         stage('Cucumber Report') {
-//             steps {
-//                 cucumber buildStatus: "UNSTABLE",
-//                     fileIncludePattern: "**/cucumber.json",
-//                     jsonReportDirectory: "target"
-//             }
-//         }
+        stage('Cucumber Report') {
+            steps {
+                cucumber buildStatus: "UNSTABLE",
+                    fileIncludePattern: "**/*.json",
+                    jsonReportDirectory: "target"
+            }
+        }
     }
 }
 
