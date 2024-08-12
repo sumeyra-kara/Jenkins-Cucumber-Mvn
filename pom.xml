@@ -27,9 +27,31 @@
                     <testFailureIgnore>true</testFailureIgnore>
                     <includes>
                         <include>**/CukesRunner*.java</include>
+                        <include>**/*Test.java</include>    
                     </includes>
                 </configuration>
             </plugin>
+
+                 <plugin>
+    <groupId>com.github.novemberain</groupId>
+    <artifactId>maven-cucumber-reporting</artifactId>
+    <version>5.1.0</version>
+    <executions>
+        <execution>
+            <id>generate-reports</id>
+            <phase>verify</phase>
+            <goals>
+                <goal>generate</goal>
+            </goals>
+            <configuration>
+                <formats>
+                    <format>json</format>
+                </formats>
+                <outputDirectory>target/cucumber-reports</outputDirectory>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
         </plugins>
     </build>
 
