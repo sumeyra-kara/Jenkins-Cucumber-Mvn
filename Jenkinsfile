@@ -43,11 +43,11 @@ pipeline {
                 bat "mvn -f pom.xml test"
                 bat "mvn clean verify -Dcucumber.filter.tags='$params.TagName' -DfailIfNoTests=false"
             }
-             post {
-                 always {
-                     cucumber 'target/cucumber-reports/cucumber.json'
-                 }
-             }
+ //            post {
+ //                always {
+   //                  cucumber 'target/cucumber-reports/cucumber.json'
+     //            }
+       //      }
 
         }
         stage('Cucumber Report') {
