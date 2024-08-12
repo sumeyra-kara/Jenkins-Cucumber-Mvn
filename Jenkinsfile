@@ -43,20 +43,20 @@ pipeline {
                 sh "mvn -f pom.xml test"
                 sh "mvn clean verify -Dcucumber.filter.tags='$params.TagName' -DfailIfNoTests=false"
             }
-//             post {
-//                 always {
-//                     junit 'Cucumber-Mvn-Project/target/surefire-reports/*.xml'
-//                     html 'target/cucumber-report.html'
-//                 }
-//             }
-        }
-        stage('Cucumber Report') {
-            steps {
-                cucumber buildStatus: "UNSTABLE",
-                    fileIncludePattern: "**/cucumber.json",
-                    jsonReportDirectory: "target"
+            post {
+                always {
+                    cucumber 'target/cucumber-reports/Cucumber.json'
+                }
             }
+
         }
+//         stage('Cucumber Report') {
+//             steps {
+//                 cucumber buildStatus: "UNSTABLE",
+//                     fileIncludePattern: "**/cucumber.json",
+//                     jsonReportDirectory: "target"
+//             }
+//         }
     }
 }
 
